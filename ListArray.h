@@ -26,10 +26,10 @@ public:
     void append(T e) override;
     void prepend(T e) override;
     T remove(int pos) override;
-    T get(int pos) override;
-    int search(T e) override;
-    bool empty() override;
-    int size() override;
+    T get(int pos) const override;
+    int search(T e) const override;
+    bool empty() const override;
+    int size() const override;
    
     template <typename U>
     friend std::ostream& operator<<(std::ostream &out, const ListArray<U> &list);
@@ -134,7 +134,7 @@ T ListArray<T>::remove(int pos) {
 }
 
 template <typename T>
-T ListArray<T>::get(int pos) {
+T ListArray<T>::get(int pos) const{
     if (pos < 0 || pos >= n) {
         throw std::out_of_range("Posición fuera de rango");
     }
@@ -142,7 +142,7 @@ T ListArray<T>::get(int pos) {
 }
 
 template <typename T>
-int ListArray<T>::search(T e) {
+int ListArray<T>::search(T e) const{
     for (int i = 0; i < n; i++) {
         if (arr[i] == e) {
             return i;
@@ -152,12 +152,12 @@ int ListArray<T>::search(T e) {
 }
 
 template <typename T>
-bool ListArray<T>::empty() {
+bool ListArray<T>::empty() const{
     return n == 0;
 }
 
 template <typename T>
-int ListArray<T>::size() {
+int ListArray<T>::size() const{
     return n;
 }
 
